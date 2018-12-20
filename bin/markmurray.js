@@ -2,28 +2,6 @@
 
 const chalk = require('chalk')
 const boxen = require('boxen')
-const ignoreChars = /[^!-~]/g;
-
-function rainbow(str, offset) {
-	if (!str || str.length === 0) {
-		return str;
-	}
-
-	const hueStep = 360 / str.replace(ignoreChars, '').length;
-
-	let hue = offset % 360;
-	const chars = [];
-	for (const c of str) {
-		if (c.match(ignoreChars)) {
-			chars.push(c);
-		} else {
-			chars.push(chalk.hsl(hue, 100, 50)(c));
-			hue = (hue + hueStep) % 360;
-		}
-	}
-
-	return chars.join('');
-}
 
 const options = {
   padding: 1,
@@ -35,9 +13,9 @@ const label = text => chalk.gray.bold(`${text}:`)
 const link = text => chalk.magenta.bold(text)
 
 const data = {
-  name: chalk.white.bold('Mark Murray'),
-  handle: '@markmur',
-  work: chalk.white.italic('Senior Software Engineer @ Zalando, Dublin'),
+  name: chalk.green.bold('Mark Murray'),
+  handle: chalk.white('@markmur'),
+  work: chalk.white.italic('Software Engineer @ Zalando, Dublin'),
   portfolio: chalk.cyan.bold('https://markmurray.co'),
   twitter: link('https://twitter.com/markmur'),
   github: link('https://github.com/markmur'),
@@ -46,9 +24,9 @@ const data = {
 }
 
 const output = `
-  ${data.name} / ${rainbow(data.handle, 0)}
+  ${data.name} / ${data.handle}
 
-  ${data.work}
+  ${data.work}                    
 
   ${chalk.underline.cyan.bold('https://markmurray.co')}
 
