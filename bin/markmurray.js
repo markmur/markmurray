@@ -1,60 +1,62 @@
 #!/usr/bin/env node
-// 👆 Used to tell Node.js that this is a CLI tool
 
-// Pull in our modules
-var chalk = require('chalk')
-var boxen = require('boxen')
+const chalk = require('chalk')
+const boxen = require('boxen')
+const ignoreChars = /[^!-~]/g;
 
-// Define options for Boxen
-let options = {
+function rainbow(str, offset) {
+	if (!str || str.length === 0) {
+		return str;
+	}
+
+	const hueStep = 360 / str.replace(ignoreChars, '').length;
+
+	let hue = offset % 360;
+	const chars = [];
+	for (const c of str) {
+		if (c.match(ignoreChars)) {
+			chars.push(c);
+		} else {
+			chars.push(chalk.hsl(hue, 100, 50)(c));
+			hue = (hue + hueStep) % 360;
+		}
+	}
+
+	return chars.join('');
+}
+
+const options = {
   padding: 1,
-  margin: 1,
+  margin: 2,
   borderStyle: 'round'
 }
-// Text + chalk definitions
-let data = {
-  name: chalk.white('Mark Murray /'),
-  handle: chalk.cyan('markmur'),
-  work: chalk.white('Senior Software Engineer @ Zalando, Dublin'),
-  twitter: chalk.cyan('https://twitter.com/markmur'),
-  github: chalk.cyan('https://github.com/markmur'),
-  linkedin: chalk.cyan('https://www.linkedin.com/in/markmur/'),
-  web: chalk.cyan('https://markmurray.co'),
-  npx: chalk.white('npx markmurray'),
-  labelWork: chalk.white.bold('      Work:'),
-  labelTwitter: chalk.white.bold('   Twitter:'),
-  labelGitHub: chalk.white.bold('    GitHub:'),
-  labelLinkedIn: chalk.white.bold('  LinkedIn:'),
-  labelWeb: chalk.white.bold('       Web:'),
-  labelCard: chalk.white.bold('      Card:')
+
+const label = text => chalk.gray.bold(`${text}:`)
+const link = text => chalk.magenta.bold(text)
+
+const data = {
+  name: chalk.white.bold('Mark Murray'),
+  handle: '@markmur',
+  work: chalk.white.italic('Senior Software Engineer @ Zalando, Dublin'),
+  portfolio: chalk.cyan.bold('https://markmurray.co'),
+  twitter: link('https://twitter.com/markmur'),
+  github: link('https://github.com/markmur'),
+  linkedin: link('https://linkedin.com/in/markmur/'),
+  npx: chalk.green.bold('npx markmurray'),
 }
 
-// Actual strings we're going to output
-var newline = '\n'
-var heading = `${data.name} ${data.handle}`
-var working = `${data.labelWork}  ${data.work}`
-var twittering = `${data.labelTwitter}  ${data.twitter}`
-var githubing = `${data.labelGitHub}  ${data.github}`
-var linkedining = `${data.labelLinkedIn}  ${data.linkedin}`
-var webing = `${data.labelWeb}  ${data.web}`
-var carding = `${data.labelCard}  ${data.npx}`
+const output = `
+  ${data.name} / ${rainbow(data.handle, 0)}
 
-// Put all our output together into a single variable so we can use boxen effectively
-let output =
-  heading +
-  newline +
-  newline +
-  working +
-  newline +
-  twittering +
-  newline +
-  githubing +
-  newline +
-  linkedining +
-  newline +
-  webing +
-  newline +
-  newline +
-  carding
+  ${data.work}
+
+  ${chalk.underline.cyan.bold('https://markmurray.co')}
+
+   ${label('Twitter')} ${data.twitter}
+    ${label('GitHub')} ${data.github}
+  ${label('LinkedIn')} ${data.linkedin}
+
+  ${label('Card')} ${data.npx}
+`
 
 console.log(chalk.green(boxen(output, options)))
