@@ -1,7 +1,7 @@
-# Usage
+# Terminal Business Card
 
-Via npx:
-
-```
+```sh
 npx markmurray
 ```
+
+Inspired by https://github.com/bnb & https://github.com/sindresorhus! 🙏 
