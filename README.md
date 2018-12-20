@@ -4,6 +4,6 @@
 npx markmurray
 ```
 
-  <img src="https://github.com/markmur/markmurray/raw/master/.github/npx-markmurray.png?raw=true" width="150" alt="npx markmurray" />
+  <img src="https://github.com/markmur/markmurray/raw/master/.github/npx-markmurray.png?raw=true" alt="npx markmurray" />
 
 Inspired by https://github.com/bnb & https://github.com/sindresorhus! 🙏 
