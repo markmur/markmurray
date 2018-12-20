@@ -18,6 +18,7 @@ let data = {
   work: chalk.white('Senior Software Engineer @ Zalando, Dublin'),
   twitter: chalk.cyan('https://twitter.com/markmur'),
   github: chalk.cyan('https://github.com/markmur'),
+  linkedin: chalk.cyan('https://www.linkedin.com/in/markmur/'),
   web: chalk.cyan('https://markmurray.co'),
   npx: chalk.white('npx markmurray'),
   labelWork: chalk.white.bold('      Work:'),

@@ -1,23 +1,17 @@
 {
-  "name": "bitandbang",
-  "version": "0.0.0",
-  "description": "A personal card for Tierney Cyren (@bitandbang)",
+  "name": "markmurray",
+  "version": "1.1.0",
+  "description": "A personal card for Mark Murray (@markmur)",
   "main": "index.js",
   "bin": {
-    "bitandbang": "./bin/card.js"
+    "markmurray": "./bin/markmurray.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bnb/bitandbang.git"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eject": "react-scripts eject"
+    "url": "https://github.com/markmur/markmurray.git"
   },
   "keywords": [],
-  "author": "Tierney Cyren <hello@bnb.im> (http://bnb.im)",
+  "author": "Mark Murray <mark.murray.ie@gmail.com> (http://github.com/markmur)",
   "license": "MIT",
   "dependencies": {
     "boxen": "^2.1.0",
@@ -25,7 +19,6 @@
     "commander": "^2.19.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.0",
     "standard": "^12.0.1"
   }
 }
