@@ -9,13 +9,13 @@ const options = {
   borderStyle: "round"
 };
 
-const label = text => chalk.gray.bold(`${text}:`);
-const link = text => chalk.magenta.bold(text);
+const label = (text) => chalk.gray.bold(`${text}:`);
+const link = (text) => chalk.magenta.bold(text);
 
 const data = {
   name: chalk.green.bold("Mark Murray"),
   handle: chalk.white("@markmur"),
-  work: chalk.white.italic("Software Engineer @ Zalando, Dublin"),
+  work: chalk.white.italic("Senior Developer @ Shopify, Dublin"),
   portfolio: chalk.cyan.bold("https://markmurray.co"),
   twitter: link("https://twitter.com/mrkmur"),
   github: link("https://github.com/markmur"),
